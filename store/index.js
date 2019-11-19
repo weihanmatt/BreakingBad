@@ -3,9 +3,9 @@ import actions from './actions'
 import getters from './getters'
 import mutations from './mutations.js'
 
-cosnt createStore = () => {
+const createStore = () => {
   return new Vuex.Store({
-    state:{
+    state: {
       houses: [],
       cities: [],
       characters: []

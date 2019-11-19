@@ -45,5 +45,5 @@ export default {
 }
 </script>
 
-<style lang="sass" src="~static/sass/house.sass">
+<style lang="sass" src="../../static/sass/house.sass">
 </style>

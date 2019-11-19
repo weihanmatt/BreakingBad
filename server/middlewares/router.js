@@ -1,31 +1,11 @@
-import Router from 'koa-router'
-import sha1 from 'sha1'
-import config from '../config'
+import Route from '../decorator/router'
+import { resolve } from 'path'
+
+const r = path => resolve(__dirname, path)
 
 export const router = app => {
-  const router = new Router()
+  const apiPath = r('../routes')
+  const router = new Route(app, apiPath)
 
-  router.get('/wechat-hear', (ctx, next) => {
-    require('../wechat')
-    const token = config.wechat.token
-    const {
-      signature,
-      nonce,
-      timestamp,
-      echostr
-    } = ctx.query
-    const str = [token, timestamp, nonce].sort().join('')
-    const sha = sha1(str)
-    if (sha === signature) {
-      ctx.body = echostr
-    } else {
-      ctx.body = echostr
-    }
-    ctx.body = 'Failed'
-  })
-  // router.post('/wehcat-hear', (ctx, next) {
-
-  // })
-  app.use(router.routes())
-  app.use(router.allowedMethods())
+  router.init()
 }

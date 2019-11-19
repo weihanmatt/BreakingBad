@@ -2,22 +2,21 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const Mixed = Schema.Types.Mixed
 
-const WikiHouseSchema = new mongoose.Schema({
+const WikiCharacterSchema = new mongoose.Schema({
+  _id: String,
+  wikiId: Number,
+  nmId: String,
+  chId: String,
   name: String,
   cname: String,
-  words: String,
-  intro: String,
-  cover: String,
-  wikiId: Number,
+  playedBy: String,
+  profile: String,
+  images: [
+    String
+  ],
   sections: Mixed,
-  swornMember: [
-    {
-      character: {
-        type: String,
-        ref: 'WikiCaracter'
-      },
-      text: String
-    }
+  intro: [
+    String
   ],
   meta: {
     createdAt: {
@@ -31,7 +30,7 @@ const WikiHouseSchema = new mongoose.Schema({
   }
 })
 
-WikiHouseSchema.pre('save', function (next) {
+WikiCharacterSchema.pre('save', function (next) {
   if (this.isNew) {
     this.meta.createdAt = this.meta.updatedAt = Date.now()
   } else {
@@ -39,4 +38,4 @@ WikiHouseSchema.pre('save', function (next) {
   }
   next()
 })
-const WikiHouse = mongoose.model('WikiHouse', WikiHouseSchema)
+const WikiCharacter = mongoose.model('WikiCharacter', WikiCharacterSchema)
