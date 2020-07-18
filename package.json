@@ -20,7 +20,7 @@
     "koa": "^2.4.1",
     "koa-router": "^8.0.0-alpha.1",
     "latest-node": "^0.0.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mongoose": "^5.7.10",
     "node-sass": "^4.5.3",
     "nuxt": "^1.4.2",
